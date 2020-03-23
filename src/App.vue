@@ -1,20 +1,116 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button @click="getSelectedRows()">Get Selected Rows</button>
+    <p>{{filteredItems}}/{{totalItems}}</p>
+    <ag-grid-vue style="width: 500px; height: 500px;"
+                 class="ag-theme-alpine"
+                 :gridOptions="gridOptions"
+                 :frameworkComponents="frameworkComponents"
+                 :columnDefs="columnDefs"
+                 :rowData="rowData"
+                 :context="context"
+                 floatingFilter=true
+                 rowSelection="single"
+                 @grid-ready="onGridReady"
+                 @filter-changed="onFilterChanged">
+    </ag-grid-vue>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {AgGridVue} from "ag-grid-vue";
+import CustomCellRenderer from "./components/CustomCellRenderer.vue";
+
 
 export default {
   name: 'App',
+  data() {
+            return {
+                columnDefs: null,
+                frameworkComponents: null,
+                rowData: null,
+                totalItems: 0,
+                filteredItems: 0,
+                gridOptions: {
+                    rowHeight: 28,
+                    defaultColDef: {
+                        resizable: true, 
+                        filter: true,
+                        suppressAndOrCondition: true,
+                        sortable: true,
+                        flex: 1,
+                        minWidth: 100,
+                    }
+                },
+            }
+        },
   components: {
-    HelloWorld
+            AgGridVue
+        },
+  methods: {
+            onFilterChanged(params){
+                this.filteredItems = params.api.getDisplayedRowCount()
+            },
+            onGridReady(params) {
+                this.gridApi = params.api;
+                this.columnApi = params.column
+                this.filteredItems = params.api.getDisplayedRowCount()
+            },
+            getSelectedRows() {
+                const selectedNodes = this.gridApi.getSelectedNodes();
+                const selectedData = selectedNodes.map( node => node.data );
+                const selectedDataStringPresentation = selectedData.map( node => node.make + ' ' + node.model).join(', ');
+                alert(`Selected nodes: ${selectedDataStringPresentation}`);
+            }
+        },
+  beforeMount() {
+            this.context = { componentParent: this };
+            this.frameworkComponents = {
+              customCellRenderer: CustomCellRenderer,
+            };
+            this.columnDefs = [
+                {headerName: 'Make', field: 'make', pinned: 'left', lockPosition: true, cellRenderer: 'customCellRenderer'},
+                {headerName: 'Model', field: 'model', filter: false},
+                {headerName: 'Price', field: 'price', filter: 'agNumberColumnFilter'}
+            ];
+
+            var rowData = [
+              {
+                make: 'Toyota', 
+                model: 'Celica', 
+                price: 35123
+              },
+              {
+                make: 'UAZ', 
+                model: 'Patriot', 
+                price: 121212
+              },
+              {
+                make: 'Kakaka', 
+                model: 'baaba', 
+                price: 77777
+              },
+            ]
+
+            this.rowData = rowData
+            this.totalItems = rowData.length
+            this.filteredItems = rowData.length
+
+            // fetch('https://api.myjson.com/bins/15psn9')
+            //   .then(result => result.json())
+            //   .then(rowData => {
+            //     this.rowData = rowData
+            //     this.totalItems = rowData.length
+            //     this.filteredItems = rowData.length
+            //     });
   }
 }
 </script>
+
+<style lang="scss">
+  @import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+  @import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css";
+</style>
 
 <style lang="scss">
 #app {
@@ -24,5 +120,27 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+</style>
+
+<style lang="scss">
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+
+.ag-theme-alpine {
+    @include ag-theme-alpine((
+        // use theme parameters where possible
+        alpine-active-color: orange
+    ));
+
+    .ag-header {
+        // or write CSS selectors to make customisations beyond what the parameters support
+        text-shadow: deeppink;
+    }
+
+    .ag-cell {
+      padding: 0px;
+      line-height: 22px;
+      height: 26px;
+    }
 }
 </style>
