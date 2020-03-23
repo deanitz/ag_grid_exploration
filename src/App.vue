@@ -36,7 +36,9 @@ export default {
                     defaultColDef: {
                         resizable: true, 
                         filter: true,
-                        suppressAndOrCondition: true,
+                        filterParams: {
+                          suppressAndOrCondition: true,
+                        },
                         sortable: true,
                         flex: 1,
                         minWidth: 100,
@@ -74,22 +76,66 @@ export default {
                 {headerName: 'Price', field: 'price', filter: 'agNumberColumnFilter'}
             ];
 
-            var rowData = [
-              {
-                make: 'Toyota', 
-                model: 'Celica', 
+            var rowData = [{
+                make: 'Toyota',
+                model: 'Celica',
                 price: 35123
               },
               {
-                make: 'UAZ', 
-                model: 'Patriot', 
+                make: 'UAZ',
+                model: 'Patriot',
                 price: 121212
               },
               {
-                make: 'Kakaka', 
-                model: 'baaba', 
-                price: 77777
+                make: 'Ford',
+                model: 'Mondeo',
+                price: 32000
               },
+              {
+                make: 'Porsche',
+                model: 'Boxter',
+                price: 72000
+              },
+              {
+                make: 'Toyota',
+                model: 'Celica',
+                price: 35123
+              },
+              {
+                make: 'UAZ',
+                model: 'Patriot',
+                price: 121212
+              },
+              {
+                make: 'Ford',
+                model: 'Mondeo',
+                price: 32000
+              },
+              {
+                make: 'Porsche',
+                model: 'Boxter',
+                price: 72000
+              },
+              {
+                make: 'Toyota',
+                model: 'Celica',
+                price: 35123
+              },
+              {
+                make: 'UAZ',
+                model: 'Patriot',
+                price: 121212
+              },
+              {
+                make: 'Ford',
+                model: 'Mondeo',
+                price: 32000
+              },
+              {
+                make: 'Porsche',
+                model: 'Boxter',
+                price: 72000
+              }
             ]
 
             this.rowData = rowData
@@ -134,13 +180,13 @@ export default {
 
     .ag-header {
         // or write CSS selectors to make customisations beyond what the parameters support
-        text-shadow: deeppink;
+        text-shadow: deeppink 1px;
     }
 
     .ag-cell {
-      padding: 0px;
+      padding-left: 4px;
+      padding-right: 4px;
       line-height: 22px;
-      height: 26px;
     }
 }
 </style>
