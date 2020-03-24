@@ -1,10 +1,5 @@
 <template>
-    <div>
-        <div v-if="value" class="custom-cell">
-                Custom + {{value}}
-        </div>
-        <div v-else/>
-    </div>
+   <div>{{value ? value : 'LOADING...'}}</div>
 </template>
 
 <script>
@@ -24,10 +19,4 @@ export default Vue.extend( {
 </script>
 
 <style>
-    .custom-cell
-    {
-        padding: 0 10px 0 10px;
-        background: orange;
-        border: darkorange 2px solid;
-    }
 </style>

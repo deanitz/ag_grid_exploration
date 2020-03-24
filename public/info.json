@@ -1,0 +1,758 @@
+[
+    {
+        "id": 1,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 2,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 3,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 4,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 5,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 6,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 7,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 8,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 9,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 10,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 12,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 13,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 14,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 15,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 16,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 17,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 18,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 19,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 20,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 21,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 22,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 23,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 24,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 25,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 26,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 27,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 28,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 29,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 30,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 31,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 32,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 33,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 34,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 35,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 36,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 37,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 38,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 39,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 40,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 41,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 42,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 43,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 44,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 45,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 46,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 47,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 48,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 49,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 50,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 51,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 52,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 53,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 54,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 55,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 56,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 57,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 58,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 59,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 60,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 61,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 62,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 63,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 64,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 65,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 66,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 77,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 88,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 99,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 111,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 112,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 113,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 114,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 115,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 116,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 117,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 118,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 119,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 120,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 121,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 122,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 123,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 124,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 125,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 126,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 127,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 128,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 129,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 130,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 131,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 132,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 133,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 134,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 135,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 136,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 137,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 138,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 139,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 140,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 141,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 142,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 143,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 144,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 145,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 146,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 147,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 148,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 149,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 150,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 151,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 152,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 153,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 154,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 155,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 156,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 157,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 158,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 159,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 160,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 161,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 162,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 163,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 164,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 165,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    },
+    {
+        "id": 166,
+        "make": "Toyota",
+        "model": "Celica",
+        "price": 15001
+    },
+    {
+        "id": 167,
+        "make": "UAZ",
+        "model": "Patriot",
+        "price": 16002
+    },
+    {
+        "id": 168,
+        "make": "Ford",
+        "model": "Mondeo",
+        "price": 17003
+    }
+]

@@ -5,10 +5,20 @@
     <ag-grid-vue style="width: 500px; height: 500px;"
                  class="ag-theme-alpine"
                  :gridOptions="gridOptions"
+                 :components="components"
                  :frameworkComponents="frameworkComponents"
                  :columnDefs="columnDefs"
                  :rowData="rowData"
                  :context="context"
+                 :rowBuffer="rowBuffer"
+                 :rowDeselection="true"
+                 :rowModelType="rowModelType"
+                 :paginationPageSize="paginationPageSize"
+                 :cacheOverflowSize="cacheOverflowSize"
+                 :cacheBlockSize="cacheBlockSize"
+                 :maxConcurrentDatasourceRequests="maxConcurrentDatasourceRequests"
+                 :infiniteInitialRowCount="infiniteInitialRowCount"
+                 :maxBlocksInCache="maxBlocksInCache"
                  rowSelection="single"
                  @grid-ready="onGridReady"
                  @filter-changed="onFilterChanged">
@@ -19,6 +29,8 @@
 <script>
 import {AgGridVue} from "ag-grid-vue";
 import CustomCellRenderer from "./components/CustomCellRenderer.vue";
+import LoadingCellRenderer from "./components/LoadingCellRenderer.vue";
+// import { LoadingCellRenderer } from 'ag-grid-community/dist/lib/rendering/cellRenderers/loadingCellRenderer';
 
 
 export default {
@@ -26,11 +38,22 @@ export default {
   data() {
             return {
                 columnDefs: null,
+                components: null,
                 frameworkComponents: null,
                 rowData: null,
                 totalItems: 0,
                 filteredItems: 0,
+                rowBuffer: null,
+                rowSelection: null,
+                rowModelType: null,
+                paginationPageSize: null,
+                cacheOverflowSize: null,
+                cacheBlockSize: null,
+                maxConcurrentDatasourceRequests: null,
+                infiniteInitialRowCount: null,
+                maxBlocksInCache: null,
                 gridOptions: {
+                    rowModelType: 'infinite',
                     rowHeight: 28,
                     defaultColDef: {
                         resizable: true, 
@@ -50,12 +73,39 @@ export default {
         },
   methods: {
             onFilterChanged(params){
-                this.filteredItems = params.api.getDisplayedRowCount()
+                //this.filteredItems = params.api.getDisplayedRowCount()
             },
             onGridReady(params) {
                 this.gridApi = params.api;
                 this.columnApi = params.column
-                this.filteredItems = params.api.getDisplayedRowCount()
+
+                fetch('http://localhost:8081/info.json')
+                  .then(result => result.json())
+                  .then(rowData => {
+                    console.log(rowData)
+                    var dataSource = {
+                    rowCount: null,
+                    getRows: function(params) {
+                      console.log(
+                        'asking for ' + params.startRow + ' to ' + params.endRow
+                      );
+                      setTimeout(function() {
+                        var rowsThisPage = rowData.slice(params.startRow, params.endRow);
+                        var lastRow = -1;
+                        if (rowData.length <= params.endRow) {
+                          lastRow = rowData.length;
+                        }
+                        params.successCallback(rowsThisPage, lastRow);
+                      }, 500);
+                    },
+                  };
+                  params.api.setDatasource(dataSource);
+                    // this.rowData = rowData
+                    // this.totalItems = rowData.length
+                    // this.filteredItems = rowData.length
+                    });
+
+                //this.filteredItems = params.api.getDisplayedRowCount()
             },
             getSelectedRows() {
                 const selectedNodes = this.gridApi.getSelectedNodes();
@@ -68,78 +118,28 @@ export default {
             this.context = { componentParent: this };
             this.frameworkComponents = {
               customCellRenderer: CustomCellRenderer,
+              loadingRenderer: LoadingCellRenderer,
             };
             this.columnDefs = [
-                {headerName: 'Make', field: 'make', pinned: 'left', lockPosition: true, cellRenderer: 'customCellRenderer'},
+                {headerName: 'ID', field: 'id', pinned: 'left', lockPosition: true, filter: false, cellRenderer: 'loadingRenderer', width: 50},
+                {headerName: 'Make', field: 'make', pinned: 'left', lockPosition: true, cellRenderer: 'customCellRenderer', width: 70},
                 {headerName: 'Model', field: 'model', filter: false},
                 {headerName: 'Price', field: 'price', filter: 'agNumberColumnFilter'}
             ];
 
-            var rowData = [{
-                make: 'Toyota',
-                model: 'Celica',
-                price: 35123
-              },
-              {
-                make: 'UAZ',
-                model: 'Patriot',
-                price: 121212
-              },
-              {
-                make: 'Ford',
-                model: 'Mondeo',
-                price: 32000
-              },
-              {
-                make: 'Porsche',
-                model: 'Boxter',
-                price: 72000
-              },
-              {
-                make: 'Toyota',
-                model: 'Celica',
-                price: 35123
-              },
-              {
-                make: 'UAZ',
-                model: 'Patriot',
-                price: 121212
-              },
-              {
-                make: 'Ford',
-                model: 'Mondeo',
-                price: 32000
-              },
-              {
-                make: 'Porsche',
-                model: 'Boxter',
-                price: 72000
-              },
-              {
-                make: 'Toyota',
-                model: 'Celica',
-                price: 35123
-              },
-              {
-                make: 'UAZ',
-                model: 'Patriot',
-                price: 121212
-              },
-              {
-                make: 'Ford',
-                model: 'Mondeo',
-                price: 32000
-              },
-              {
-                make: 'Porsche',
-                model: 'Boxter',
-                price: 72000
-              }
-            ]
+            this.rowBuffer = 0;
+            this.rowModelType = 'infinite';
+            this.paginationPageSize = 30;
+            this.cacheOverflowSize = 2;
+            this.cacheBlockSize = 20;
+            this.maxConcurrentDatasourceRequests = 1;
+            this.infiniteInitialRowCount = 30;
+            this.maxBlocksInCache = 3;
 
-            this.rowData = rowData
-            this.totalItems = rowData.length
-            this.filteredItems = rowData.length
+
+            // this.rowData = rowData
+            // this.totalItems = rowData.length
+            // this.filteredItems = rowData.length
 
             // fetch('https://api.myjson.com/bins/15psn9')
             //   .then(result => result.json())
