@@ -23,7 +23,8 @@ export default Vue.extend( {
 <style>
     .custom-cell
     {
-        background: red;
-        border: blue 1px solid;
+        padding: 0 10px 0 10px;
+        background: orange;
+        border: darkorange 2px solid;
     }
 </style>

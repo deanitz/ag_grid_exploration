@@ -9,7 +9,6 @@
                  :columnDefs="columnDefs"
                  :rowData="rowData"
                  :context="context"
-                 floatingFilter=true
                  rowSelection="single"
                  @grid-ready="onGridReady"
                  @filter-changed="onFilterChanged">
@@ -188,5 +187,21 @@ export default {
       padding-right: 4px;
       line-height: 22px;
     }
+
+    // .ag-icon-filter:before {
+    //     content: '\E914';
+    // }
+
+    // .ag-pinned-left-header {
+    //   border-right: 2px solid violet;
+    // }
+
+    // .ag-pinned-left-cols-container {
+    //   border-right: 2px solid violet;
+    // }
+
+    // .ag-cell-last-left-pinned {
+    //   border-right: 2px solid violet;
+    // }
 }
 </style>
