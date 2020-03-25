@@ -1,6 +1,9 @@
 <template>
   <div>
     <button @click="getSelectedRows()">Get Selected Rows</button>
+    
+    <button @click="addRowDataView()">Add Row</button>
+    <button @click="refreshDataView()">Refresh</button>
     <p>{{filteredItems}}/{{totalItems}}</p>
     <ag-grid-vue style="width: 500px; height: 500px;"
                  class="ag-theme-alpine"
@@ -8,7 +11,6 @@
                  :components="components"
                  :frameworkComponents="frameworkComponents"
                  :columnDefs="columnDefs"
-                 :rowData="rowData"
                  :context="context"
                  :rowBuffer="rowBuffer"
                  :rowDeselection="true"
@@ -41,6 +43,7 @@ export default {
                 components: null,
                 frameworkComponents: null,
                 rowData: null,
+                lastId: 10000,
                 totalItems: 0,
                 filteredItems: 0,
                 rowBuffer: null,
@@ -78,10 +81,11 @@ export default {
             onGridReady(params) {
                 this.gridApi = params.api;
                 this.columnApi = params.column
-
+                //STUB imitating server data fetch
                 fetch('http://localhost:8081/info.json')
                   .then(result => result.json())
                   .then(rowData => {
+                    this.rowData = rowData
                     console.log(rowData)
                     var dataSource = {
                     rowCount: null,
@@ -89,8 +93,12 @@ export default {
                       console.log(
                         'asking for ' + params.startRow + ' to ' + params.endRow
                       );
+                      //here to call server
                       setTimeout(function() {
+                        console.log(params);
+                        //console.log(params);
                         var rowsThisPage = rowData.slice(params.startRow, params.endRow);
+                        rowsThisPage.forEach(row => row.price = Math.floor(Math.random() * Math.floor(100000)));
                         var lastRow = -1;
                         if (rowData.length <= params.endRow) {
                           lastRow = rowData.length;
@@ -112,6 +120,15 @@ export default {
                 const selectedData = selectedNodes.map( node => node.data );
                 const selectedDataStringPresentation = selectedData.map( node => node.make + ' ' + node.model).join(', ');
                 alert(`Selected nodes: ${selectedDataStringPresentation}`);
+            },
+            refreshDataView() {
+                this.gridApi.refreshInfiniteCache()
+            },
+            addRowDataView() {
+              this.rowData.splice(3, 0, {"id": this.lastId++,
+                                    "make": "Abracadabra",
+                                    "model": "Sim Salabim",
+                                    "price": Math.floor(Math.random() * Math.floor(100000))})
             }
         },
   beforeMount() {
