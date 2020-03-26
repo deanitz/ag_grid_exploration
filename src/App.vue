@@ -3,7 +3,10 @@
     <button @click="getSelectedRows()">Get Selected Rows</button>
     
     <button @click="addRowDataView()">Add Row</button>
-    <button @click="refreshDataView()">Refresh</button>
+    <button @click="refreshDataView()">Refresh Server Data</button>
+    <button @click="refreshCells()">Refresh Cells</button>
+    <button @click="printCacheData()">Print Cache Data</button>
+
     <p>{{filteredItems}}/{{totalItems}}</p>
     <ag-grid-vue style="width: 500px; height: 500px;"
                  class="ag-theme-alpine"
@@ -80,19 +83,22 @@ export default {
             },
             onGridReady(params) {
                 this.gridApi = params.api;
-                this.columnApi = params.column
+                this.columnApi = params.column;
                 //STUB imitating server data fetch
-                fetch('http://localhost:8081/info.json')
+                fetch('http://localhost:8080/info.json')
                   .then(result => result.json())
                   .then(rowData => {
                     this.rowData = rowData
                     console.log(rowData)
                     var dataSource = {
                     rowCount: null,
-                    getRows: function(params) {
+                    getRows: params => {
                       console.log(
                         'asking for ' + params.startRow + ' to ' + params.endRow
                       );
+                      
+                      this.printCacheData()
+
                       //here to call server
                       setTimeout(function() {
                         console.log(params);
@@ -124,11 +130,20 @@ export default {
             refreshDataView() {
                 this.gridApi.refreshInfiniteCache()
             },
+            refreshCells() {
+                this.gridApi.refreshCells({columns:['make', 'price'], force:true})
+            },
             addRowDataView() {
               this.rowData.splice(3, 0, {"id": this.lastId++,
                                     "make": "Abracadabra",
                                     "model": "Sim Salabim",
                                     "price": Math.floor(Math.random() * Math.floor(100000))})
+            },
+            printCacheData() {
+              var obj = this.gridApi.getCacheBlockState();
+              console.log('obj: ');
+              console.log(obj);
+              
             }
         },
   beforeMount() {

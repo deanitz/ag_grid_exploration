@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="value" class="custom-cell">
+        <div v-if="value" class="custom-cell" :style="style">
                 Custom + {{value}}
         </div>
         <div v-else/>
@@ -14,12 +14,32 @@ export default Vue.extend( {
     data: function() {
         return {
             value: null,
+            style: "background: pink"
         };
     },
     beforeMount() {},
     mounted() {
         this.value = this.params.value
     },
+    methods: {
+        refresh(params) {
+            this.params = params;
+            this.value = this.params.value
+            this.style = "background: " + this.getRandomColor()
+            console.log("refresh call")
+            return true;
+        },
+
+        getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        
+    }
 } )
 </script>
 
