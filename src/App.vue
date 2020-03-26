@@ -1,11 +1,11 @@
 <template>
   <div>
     <button @click="getSelectedRows()">Get Selected Rows</button>
-    
     <button @click="addRowDataView()">Add Row</button>
     <button @click="refreshDataView()">Refresh Server Data</button>
     <button @click="refreshCells()">Refresh Cells</button>
     <button @click="printCacheData()">Print Cache Data</button>
+    <button @click="modifyCellsData()">Modify Cached Data</button>
 
     <p>{{filteredItems}}/{{totalItems}}</p>
     <ag-grid-vue style="width: 500px; height: 500px;"
@@ -35,6 +35,7 @@
 import {AgGridVue} from "ag-grid-vue";
 import CustomCellRenderer from "./components/CustomCellRenderer.vue";
 import LoadingCellRenderer from "./components/LoadingCellRenderer.vue";
+import DataService from "./utils/dataService.js";
 // import { LoadingCellRenderer } from 'ag-grid-community/dist/lib/rendering/cellRenderers/loadingCellRenderer';
 
 
@@ -42,6 +43,7 @@ export default {
   name: 'App',
   data() {
             return {
+                DataService: new DataService(),
                 columnDefs: null,
                 components: null,
                 frameworkComponents: null,
@@ -144,6 +146,13 @@ export default {
               console.log('obj: ');
               console.log(obj);
               
+            },
+            modifyCellsData() {
+              console.log(this.gridApi.rowData)
+              this.gridApi.forEachNode((node, index) => {
+                node.setData({...node.data, make:node.data.make + "+"})
+                console.log(node.data)
+              })
             }
         },
   beforeMount() {
