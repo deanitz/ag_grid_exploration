@@ -23,10 +23,10 @@ export default class DataService {
         context.allServerData.forEach(item => {
             item.price = Math.floor(Math.random() * Math.floor(100000))
         });
-        console.log(context)
+        //console.log(context)
 
         context.subscriptions.forEach(sub => {
-            this.getServerData(sub)
+            context.getServerData(sub)
         })
     }
 
@@ -40,11 +40,13 @@ export default class DataService {
         newSubs.forEach(newSub => addSub(newSub))
     }
 
-    addSub(params){
+    addSub(newSub){
         if (this.subscriptions.every(sub => sub.blockNumber != newSub.blockNumber)){
             let data = []
-            this.subscriptions.append({...newSub, data: []})
+            this.subscriptions.push({...newSub, data: []})
         }
+
+        console.log(this.subscriptions)
     }
 
     getServerData(params) {
@@ -53,27 +55,28 @@ export default class DataService {
             console.log(params);
             //console.log(params);
             var rowsThisPage = this.allServerData.slice(params.startRow, params.endRow);
-            rowsThisPage.forEach(row => row.price = Math.floor(Math.random() * Math.floor(100000)));
-            var lastRow = -1;
-            if (this.allServerData.length <= params.endRow) {
-              lastRow = this.allServerData.length;
-            }
-            //params.successCallback(rowsThisPage, lastRow);
-          }, 500);
-    }
-
-    getData(params){
-        //here to call server
-        setTimeout(() => {
-            console.log(params);
-            //console.log(params);
-            var rowsThisPage = this.allServerData.slice(params.startRow, params.endRow);
-            rowsThisPage.forEach(row => row.price = Math.floor(Math.random() * Math.floor(100000)));
             var lastRow = -1;
             if (this.allServerData.length <= params.endRow) {
               lastRow = this.allServerData.length;
             }
             params.successCallback(rowsThisPage, lastRow);
           }, 500);
+    }
+
+    getData(params){
+
+        this.addSub(params)
+        
+        // //here to call server
+        // setTimeout(() => {
+        //     console.log(params);
+        //     //console.log(params);
+        //     var rowsThisPage = this.allServerData.slice(params.startRow, params.endRow);
+        //     var lastRow = -1;
+        //     if (this.allServerData.length <= params.endRow) {
+        //       lastRow = this.allServerData.length;
+        //     }
+        //     params.successCallback(rowsThisPage, lastRow);
+        //   }, 500);
     }
 }
