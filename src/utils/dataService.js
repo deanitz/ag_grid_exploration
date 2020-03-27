@@ -5,6 +5,8 @@ export default class DataService {
     subscriptions = [];
     dataBlocks = [];
 
+    serverPrice = 100;
+
     dataUpdatedCallback = ()=>{}
 
     constructor() {
@@ -15,35 +17,43 @@ export default class DataService {
                     console.log(this.allServerData)
                     console.log("server data loaded to emulator")
                   })
-        this.timerId = setInterval(this.updatePrices, 10000, this);
+        this.timerId = setInterval(this.updatePrices, 1000, this);
       }
 
     updatePrices(context)
     {
+        context.serverPrice++;
         context.allServerData.forEach(item => {
-            item.price = Math.floor(Math.random() * Math.floor(100000))
+            item.price = context.serverPrice;// Math.floor(Math.random() * Math.floor(100000))
         });
         //console.log(context)
 
         context.subscriptions.forEach(sub => {
+            //console.log("server updates prices for startRow" + sub.startRow)
             context.getServerData(sub)
         })
     }
 
-    //{blockNumber: 1, startRow: 20, endRow: 40, pageStatus: "loaded"}
+    syncCacheWithSubs(cache, calledBlock){
+        let cvs = Object.values(cache)
+        console.log("cache")
+        console.log(cvs)
+        console.log("this.subscriptions")
+        console.log(this.subscriptions)
 
-    syncCacheWithSubs(newSubs){
         this.subscriptions = this.subscriptions.filter(sub => {
-            return newSubs.some(newSub => newSub.blockNumber == sub.blockNumber);
+            return cvs.some(newSub => newSub.startRow == sub.startRow);
         });
 
-        newSubs.forEach(newSub => addSub(newSub))
+        this.addSub(calledBlock)
     }
 
     addSub(newSub){
-        if (this.subscriptions.every(sub => sub.blockNumber != newSub.blockNumber)){
-            let data = []
-            this.subscriptions.push({...newSub, data: []})
+        console.log("newSub")
+        console.log(newSub)
+
+        if (this.subscriptions.every(sub => sub.startRow != newSub.startRow && sub.endRow != newSub.endRow)){
+            this.subscriptions.push({...newSub})
         }
 
         console.log(this.subscriptions)
@@ -52,7 +62,7 @@ export default class DataService {
     getServerData(params) {
         //here to call server
         setTimeout(() => {
-            console.log(params);
+            //console.log(params);
             //console.log(params);
             var rowsThisPage = this.allServerData.slice(params.startRow, params.endRow);
             var lastRow = -1;
@@ -60,23 +70,11 @@ export default class DataService {
               lastRow = this.allServerData.length;
             }
             params.successCallback(rowsThisPage, lastRow);
-          }, 500);
+          }, 10); //made 100 here because data sets are pushed not pulled
+
     }
 
-    getData(params){
-
-        this.addSub(params)
-        
-        // //here to call server
-        // setTimeout(() => {
-        //     console.log(params);
-        //     //console.log(params);
-        //     var rowsThisPage = this.allServerData.slice(params.startRow, params.endRow);
-        //     var lastRow = -1;
-        //     if (this.allServerData.length <= params.endRow) {
-        //       lastRow = this.allServerData.length;
-        //     }
-        //     params.successCallback(rowsThisPage, lastRow);
-        //   }, 500);
+    getData(cache, newBlock){
+        this.syncCacheWithSubs(cache, newBlock)
     }
 }

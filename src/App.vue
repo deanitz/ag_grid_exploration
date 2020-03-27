@@ -97,7 +97,7 @@ export default {
                       this.printCacheData()
 
                       //callserver
-                      this.dataService.getData(params)
+                      this.dataService.getData(this.gridApi.getCacheBlockState(), params)
                     },
                   };
                   params.api.setDatasource(dataSource);
