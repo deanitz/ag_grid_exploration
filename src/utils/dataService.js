@@ -22,14 +22,14 @@ export default class DataService {
 
     updatePrices(context)
     {
+        //This emulates server changed the data
         context.serverPrice++;
         context.allServerData.forEach(item => {
             item.price = context.serverPrice;// Math.floor(Math.random() * Math.floor(100000))
         });
-        //console.log(context)
 
+        //this emulates server sent to client subscription response for each subscribed block 
         context.subscriptions.forEach(sub => {
-            //console.log("server updates prices for startRow" + sub.startRow)
             context.getServerData(sub)
         })
     }
@@ -60,17 +60,16 @@ export default class DataService {
     }
 
     getServerData(params) {
-        //here to call server
+        // This emulates that server prior to sending response filtered and sorted it to a block 
+        // (for simplicity is done on client)
         setTimeout(() => {
-            //console.log(params);
-            //console.log(params);
             var rowsThisPage = this.allServerData.slice(params.startRow, params.endRow);
             var lastRow = -1;
             if (this.allServerData.length <= params.endRow) {
               lastRow = this.allServerData.length;
             }
             params.successCallback(rowsThisPage, lastRow);
-          }, 10); //made 100 here because data sets are pushed not pulled
+          }, 100); //made 100 here because data sets are pushed not pulled
 
     }
 
