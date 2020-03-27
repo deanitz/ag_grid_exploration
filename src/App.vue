@@ -43,7 +43,7 @@ export default {
   name: 'App',
   data() {
             return {
-                DataService: new DataService(),
+                dataService: new DataService(),
                 columnDefs: null,
                 components: null,
                 frameworkComponents: null,
@@ -86,13 +86,8 @@ export default {
             onGridReady(params) {
                 this.gridApi = params.api;
                 this.columnApi = params.column;
-                //STUB imitating server data fetch
-                fetch('http://localhost:8080/info.json')
-                  .then(result => result.json())
-                  .then(rowData => {
-                    this.rowData = rowData
-                    console.log(rowData)
-                    var dataSource = {
+                
+                var dataSource = {
                     rowCount: null,
                     getRows: params => {
                       console.log(
@@ -101,27 +96,11 @@ export default {
                       
                       this.printCacheData()
 
-                      //here to call server
-                      setTimeout(function() {
-                        console.log(params);
-                        //console.log(params);
-                        var rowsThisPage = rowData.slice(params.startRow, params.endRow);
-                        rowsThisPage.forEach(row => row.price = Math.floor(Math.random() * Math.floor(100000)));
-                        var lastRow = -1;
-                        if (rowData.length <= params.endRow) {
-                          lastRow = rowData.length;
-                        }
-                        params.successCallback(rowsThisPage, lastRow);
-                      }, 500);
+                      //callserver
+                      this.dataService.getData(params)
                     },
                   };
                   params.api.setDatasource(dataSource);
-                    // this.rowData = rowData
-                    // this.totalItems = rowData.length
-                    // this.filteredItems = rowData.length
-                    });
-
-                //this.filteredItems = params.api.getDisplayedRowCount()
             },
             getSelectedRows() {
                 const selectedNodes = this.gridApi.getSelectedNodes();
