@@ -35,7 +35,7 @@
 import {AgGridVue} from "ag-grid-vue";
 import CustomCellRenderer from "./components/CustomCellRenderer.vue";
 import LoadingCellRenderer from "./components/LoadingCellRenderer.vue";
-import DataService from "./utils/dataService.js";
+import InternalDataService from "./utils/internalDataService.js";
 // import { LoadingCellRenderer } from 'ag-grid-community/dist/lib/rendering/cellRenderers/loadingCellRenderer';
 
 
@@ -43,7 +43,7 @@ export default {
   name: 'App',
   data() {
             return {
-                dataService: new DataService(),
+                dataService: new InternalDataService(),
                 columnDefs: null,
                 components: null,
                 frameworkComponents: null,
