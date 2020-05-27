@@ -14,7 +14,7 @@ export default class ExternalDataService {
                     console.log(this.allServerData)
                     console.log("server data loaded to emulator")
                   })
-        this.timerId = setInterval(this.updatePrices, 100, this);
+        this.timerId = setInterval(this.updatePrices, 1000, this);
       }
 
       updatePrices(context)

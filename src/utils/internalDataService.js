@@ -2,11 +2,8 @@ import ExternalDataService from './externalDataService.js'
 
 export default class InternalDataService {
 
-    externalDataService = new ExternalDataService()
-    
-    
+    externalDataService = new ExternalDataService();
     subscriptions = [];
-    dataBlocks = [];
 
     constructor() {
         this.externalDataService.notifyClient = this.notifyGrid
