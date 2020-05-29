@@ -66,4 +66,8 @@ export default class InternalDataService {
     getData(cache, newBlock){
         this.syncCacheWithSubs(cache, newBlock)
     }
+
+    addData(){
+        this.externalDataService.addData();
+    }
 }

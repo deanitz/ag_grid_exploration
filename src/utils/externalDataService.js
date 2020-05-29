@@ -31,6 +31,15 @@ export default class ExternalDataService {
           })
       }
 
+      addData(){
+        this.allServerData.splice(10, 0, {
+          "id": this.serverPrice*1000,
+          "make": "CUSTOM",
+          "model": "CUSTOM",
+          "price": 888888
+        });
+      }
+
       getServerData(sub) {
         // This emulates that server prior to sending response filtered and sorted it to a block 
         setTimeout(() => {

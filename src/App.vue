@@ -115,10 +115,7 @@ export default {
                 this.gridApi.refreshCells({columns:['make', 'price'], force:true})
             },
             addRowDataView() {
-              this.rowData.splice(3, 0, {"id": this.lastId++,
-                                    "make": "Abracadabra",
-                                    "model": "Sim Salabim",
-                                    "price": Math.floor(Math.random() * Math.floor(100000))})
+              this.dataService.addData();
             },
             printCacheData() {
               var obj = this.gridApi.getCacheBlockState();
